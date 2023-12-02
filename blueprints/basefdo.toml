@@ -1,0 +1,12 @@
+name = "fdo-base"
+description = "Blueprint for FDO manufacturing image"
+version = "0.0.1"
+packages = []
+modules = []
+groups = []
+distro = ""
+[customizations]
+installation_device = "/dev/vda"
+[customizations.fdo]
+manufacturing_server_url = "http://10.16.56.57:8080"
+diun_pub_key_insecure = "true"

@@ -1,0 +1,7 @@
+name = "ostree-base"
+description = "Base OSTree repo"
+version = "0.0.1"
+modules = []
+groups = []
+distro = ""
+
