@@ -1,0 +1,28 @@
+---
+api_vips: []
+base_dns_domain: redhat.com
+cluster_networks:
+  - cidr: 10.128.0.0/14
+    host_prefix: 23
+cpu_architecture: x86_64
+disk_encryption:
+  enable_on: none
+  mode: tpmv2
+  tang_servers: null
+high_availability_mode: None
+hyperthreading: all
+ignition_endpoint:
+  ca_certificate: null
+  url: null
+ingress_vips: []
+machine_networks: []
+name: fdo-test
+network_type: OVNKubernetes
+ocp_release_image: quay.io/openshift-release-dev/ocp-release:4.14.2-x86_64
+openshift_version: 4.14.2
+schedulable_masters: false
+service_networks:
+  - cidr: 172.30.0.0/16
+tags: ui_ocm
+user_managed_networking: true
+vip_dhcp_allocation: false
