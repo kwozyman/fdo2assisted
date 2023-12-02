@@ -1,0 +1,12 @@
+---
+ignition_config_override: |
+  {
+  "ignition": { "version": "3.1.0" },
+  "systemd": {
+    "units": [{
+      "name": "agent.service",
+      "enabled": false,
+      "contents": ""
+    }]
+  }
+  }
