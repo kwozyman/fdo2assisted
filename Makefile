@@ -10,7 +10,7 @@ create:
 	aicli update infraenv fdo-test --paramfile discovery-rm-agent.yaml
 
 download-iso:
-	aicli download iso fdo-test
+	aicli download iso $(cluster-name)
 
 clean:
 	aicli delete infraenv fdo-test -y
