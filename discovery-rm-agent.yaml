@@ -7,6 +7,11 @@ ignition_config_override: |
       "name": "agent.service",
       "enabled": false,
       "contents": ""
+    },
+    {
+      "name": "fdo-client-linuxapp.service",
+      "enabled": false,
+      "contents": "[Unit]\nDescription=FDO client\nAfter=network-online.target\n\n[Service]\nType=oneshot\nEnvironment=LOG_LEVEL=info\n\nExecStartPre=mount -L boot /mnt\nExecStartPre=cp /mnt/device-credentials /etc/device-credentials\nExecStartPre=podman run --rm --volume /root:/data --security-opt label=disable --entrypoint /bin/bash quay.io/cgament/fdo:client -c \"cp /usr/libexec/fdo/fdo-client-linuxapp /data/fdo-client-linuxapp\"\nExecStartPre=umount /mnt\nExecStart=/root/fdo-client-linuxapp\n\n[Install]\nWantedBy=multi-user.target\n"
     }]
   }
   }

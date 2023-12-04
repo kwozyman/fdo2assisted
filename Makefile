@@ -7,7 +7,7 @@ create:
 	aicli create cluster --paramfile cluster.yaml $(cluster-name)
 	aicli download discovery-ignition $(cluster-name)
 	./extract-secrets.sh discovery.ign.$(cluster-name)
-	aicli update infraenv fdo-test --paramfile discovery-rm-agent.yaml
+	aicli update infraenv $(cluster-name) --paramfile discovery-update.yaml
 
 download-iso:
 	aicli download iso $(cluster-name)
