@@ -12,6 +12,9 @@ create:
 download-iso:
 	aicli download iso $(cluster-name)
 
+show-iso-url:
+	aicli info iso $(cluster-name)
+
 clean:
 	aicli delete infraenv fdo-test -y
 	aicli delete cluster fdo-test -y
