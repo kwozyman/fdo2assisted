@@ -33,7 +33,7 @@ serviceinfo:
 	echo "        - \"$(shell tail -n 1 .secrets)\"" >> .serviceinfo
 	echo "      return_stdout: true" >> .serviceinfo
 	echo "      return_stderr: true" >> .serviceinfo
-	cat .serviceinfo
+	cat .serviceinfo && echo
 
 download-iso:
 	aicli download iso $(cluster-name)
@@ -45,3 +45,7 @@ clean:
 	aicli delete infraenv fdo-test -y
 	aicli delete cluster fdo-test -y
 	rm -f .secrets discovery.ign.$(cluster-name) .serviceinfo
+
+deps:
+	sudo dnf install -y jq python3-pip
+	sudo python3 -m pip install aicli
