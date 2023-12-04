@@ -1,12 +1,14 @@
 SHELL := bash
 cluster-name=fdo-test
 
-default: create
+default: create update-discovery show-iso-url
 
 create:
 	aicli create cluster --paramfile cluster.yaml $(cluster-name)
 	aicli download discovery-ignition $(cluster-name)
 	./extract-secrets.sh discovery.ign.$(cluster-name)
+
+update-discovery:
 	aicli update infraenv $(cluster-name) --paramfile discovery-update.yaml
 
 download-iso:
