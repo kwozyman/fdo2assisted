@@ -7,6 +7,7 @@ require {
 	class file { open write read execute execute_no_trans map };
 	class tcp_socket name_connect;
 	type unreserved_port_t;
+    type transproxy_port_t;
 	type etc_t;
 }
 
@@ -15,3 +16,4 @@ allow init_t var_t:file { open read execute execute_no_trans map };
 allow init_t us_cli_port_t:tcp_socket name_connect;
 allow init_t unreserved_port_t:tcp_socket name_connect;
 allow init_t etc_t:file write;
+allow init_t transproxy_port_t:tcp_socket name_connect;

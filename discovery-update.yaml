@@ -10,7 +10,7 @@ ignition_config_override: |
     },
     {
       "name": "fdo-client-linuxapp.service",
-      "enabled": false,
+      "enabled": true,
       "contents": "[Unit]\nDescription=FDO client\nAfter=network-online.target\n\n[Service]\nType=oneshot\nEnvironment=LOG_LEVEL=info\n\nExecStartPre=mount -L boot /mnt\nExecStartPre=cp /mnt/device-credentials /etc/device-credentials\nExecStartPre=podman run --rm --volume /var/local:/data --security-opt label=disable --entrypoint /bin/bash quay.io/cgament/fdo:client -c \"cp /usr/libexec/fdo/fdo-client-linuxapp /data/fdo-client-linuxapp\"\nExecStartPre=umount /mnt\nExecStartPre=checkmodule -M -m -o /root/fdo2assisted.mod /root/fdo2assisted.te\nExecStartPre=semodule_package -o /root/fdo2assisted.pp -m /root/fdo2assisted.mod\nExecStartPre=semodule -i /root/fdo2assisted.pp\nExecStart=/var/local/fdo-client-linuxapp\n\n[Install]\nWantedBy=multi-user.target\n"
     }]
   },
@@ -24,7 +24,7 @@ ignition_config_override: |
           "name": "root"
         },
         "contents": {
-          "source": "data:text/plain;base64,bW9kdWxlIGZkbzJhc3Npc3RlZCAxLjA7CgpyZXF1aXJlIHsKCXR5cGUgdmFyX3Q7Cgl0eXBlIGluaXRfdDsKCXR5cGUgdXNfY2xpX3BvcnRfdDsKCWNsYXNzIGZpbGUgeyBvcGVuIHdyaXRlIHJlYWQgZXhlY3V0ZSBleGVjdXRlX25vX3RyYW5zIG1hcCB9OwoJY2xhc3MgdGNwX3NvY2tldCBuYW1lX2Nvbm5lY3Q7Cgl0eXBlIHVucmVzZXJ2ZWRfcG9ydF90OwoJdHlwZSBldGNfdDsKfQoKIz09PT09PT09PT09PT0gaW5pdF90ID09PT09PT09PT09PT09CmFsbG93IGluaXRfdCB2YXJfdDpmaWxlIHsgb3BlbiByZWFkIGV4ZWN1dGUgZXhlY3V0ZV9ub190cmFucyBtYXAgfTsKYWxsb3cgaW5pdF90IHVzX2NsaV9wb3J0X3Q6dGNwX3NvY2tldCBuYW1lX2Nvbm5lY3Q7CmFsbG93IGluaXRfdCB1bnJlc2VydmVkX3BvcnRfdDp0Y3Bfc29ja2V0IG5hbWVfY29ubmVjdDsKYWxsb3cgaW5pdF90IGV0Y190OmZpbGUgd3JpdGU7Cg=="
+          "source": "data:text/plain;base64,bW9kdWxlIGZkbzJhc3Npc3RlZCAxLjA7CgpyZXF1aXJlIHsKCXR5cGUgdmFyX3Q7Cgl0eXBlIGluaXRfdDsKCXR5cGUgdXNfY2xpX3BvcnRfdDsKCWNsYXNzIGZpbGUgeyBvcGVuIHdyaXRlIHJlYWQgZXhlY3V0ZSBleGVjdXRlX25vX3RyYW5zIG1hcCB9OwoJY2xhc3MgdGNwX3NvY2tldCBuYW1lX2Nvbm5lY3Q7Cgl0eXBlIHVucmVzZXJ2ZWRfcG9ydF90OwogICAgdHlwZSB0cmFuc3Byb3h5X3BvcnRfdDsKCXR5cGUgZXRjX3Q7Cn0KCiM9PT09PT09PT09PT09IGluaXRfdCA9PT09PT09PT09PT09PQphbGxvdyBpbml0X3QgdmFyX3Q6ZmlsZSB7IG9wZW4gcmVhZCBleGVjdXRlIGV4ZWN1dGVfbm9fdHJhbnMgbWFwIH07CmFsbG93IGluaXRfdCB1c19jbGlfcG9ydF90OnRjcF9zb2NrZXQgbmFtZV9jb25uZWN0OwphbGxvdyBpbml0X3QgdW5yZXNlcnZlZF9wb3J0X3Q6dGNwX3NvY2tldCBuYW1lX2Nvbm5lY3Q7CmFsbG93IGluaXRfdCBldGNfdDpmaWxlIHdyaXRlOwphbGxvdyBpbml0X3QgdHJhbnNwcm94eV9wb3J0X3Q6dGNwX3NvY2tldCBuYW1lX2Nvbm5lY3Q7Cg=="
         }
       }
     ]
