@@ -30,10 +30,11 @@ serviceinfo:
 	echo "    - command: /bin/bash" >> .serviceinfo
 	echo "      args:" >> .serviceinfo
 	echo "        - -c" >> .serviceinfo
-	echo "        - \"$(shell tail -n 1 .secrets)\"" >> .serviceinfo
+	echo "        - \"$(shell grep PULL_SECRET_TOKEN .secrets | tr '\n' '\0') $(shell tail -n 1 .secrets)\"" >> .serviceinfo
 	echo "      return_stdout: true" >> .serviceinfo
 	echo "      return_stderr: true" >> .serviceinfo
 	cat .serviceinfo && echo
+	cat .serviceinfo > conf.fdo/serviceinfo-api/assisted.yml
 
 download-iso:
 	aicli download iso $(cluster-name)
